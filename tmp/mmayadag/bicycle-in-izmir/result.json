@@ -1,0 +1,1 @@
+{"dependencies":{"axios":"^0.19.2","moment":"^2.24.0","vue":"^3.0.0-alpha.3","vue-hot-reload-api":"^2.3.4","vue-radial-progress":"^0.2.10","vue-router":"^3.1.5","vuex":"^3.1.2"},"devDependencies":{"@vue/component-compiler-utils":"^3.1.1","parcel-bundler":"^1.12.4","sass":"^1.25.1-test.1","vue-template-compiler":"^2.6.11"}}
