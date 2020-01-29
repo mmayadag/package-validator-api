@@ -1,5 +1,6 @@
 type DataType = "npm" | "composer";
 
+/*
 const createStructure = (data: any, type: DataType) => {
   const tables = [];
 
@@ -40,7 +41,7 @@ const createStructure = (data: any, type: DataType) => {
   });
   return tables;
 };
-
+*/
 const createHtml = structure => structure
   .map(section => {
     const caption = `<caption>${section.name}</caption>`;
@@ -62,14 +63,14 @@ const createText = structure => structure
     return `${caption}\n${thead}\n${tbody}`;
   })
   .join('\n');
-
+/*
 const createMailTable = (obj, type) => {
   const structure = createStructure(obj, type);
   console.log({ obj });
   console.log({ structure, body: structure.body });
   return { html: createHtml(structure), text: createText(structure) };
 };
-
+*/
 const createListStructure = (data: any, type: DataType) => {
   const tables = [];
 
