@@ -67,7 +67,6 @@ button:focus {
 
 .result-box{
 	border: 1px solid white;
-    border-radius: 2px;
 	/*box-shadow: 2px 2px 8px rgba(0,0,0,0.1);*/
 	box-shadow: 1px 1px 10px #8080801f;
     border-radius: 10px;

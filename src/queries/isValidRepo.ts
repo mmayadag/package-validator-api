@@ -1,8 +1,9 @@
 const isValidRepo = /* GraphQL */ `
-query isValidRepo($owner:String! , $repo:String!){
+  query isValidRepo($owner: String!, $repo: String!) {
     repository(owner: $owner, name: $repo) {
-        name      
+      name
     }
-}`;
+  }
+`;
 
 export default isValidRepo;

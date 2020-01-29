@@ -5,10 +5,10 @@ import { ValidatorService } from './validator/validator.service';
 import { AppService } from './app.service';
 
 export {
-    GithubService,
-    FileService,
-    EmailService,
-    createMail,
-    ValidatorService,
-    AppService,
-}
+  GithubService,
+  FileService,
+  EmailService,
+  createMail,
+  ValidatorService,
+  AppService
+};
