@@ -1,6 +1,7 @@
-import { config } from 'dotenv';
+import { ConfigModule } from '@nestjs/config';
 
-config();
+ConfigModule.forRoot();
+
 const {
   GITHUB_ENDPOINT,
   TOKEN,
