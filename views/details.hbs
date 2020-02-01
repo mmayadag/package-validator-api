@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title>App</title>
+</head>
+
+<body>
+  {{#if valid}}
+  <main>
+    <h3><a href="https://github.com/{{ owner }}">{{ owner }}</a> / <a
+        href="https://github.com/{{ owner }}/{{ repo }}">{{ repo }}</a></h1>
+      <div id="result"></div>
+  </main>
+  <script type="text/javascript">
+    async function getRepoDetails(owner, repo, recheck) {
+      let data = { owner, repo };
+      const res = await fetch(
+        `/repo/details/{{owner}}/{{repo}}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        },
+      );
+      if (res.ok) {
+        const obj = await res.json();
+        document.querySelector("#result").innerHTML = obj.html
+      } else {
+        throw new Error(res.status)
+      }
+    }
+    getRepoDetails("{{owner}}", "{{repo}}");
+  </script>
+  {{else}}
+  <h1>This is not a public repo <a href="/">Go > Home</a>
+    <h1>
+      {{/if}}
+      <script type="text/javascript">
+        console.log({{ valid }});
+      </script>
+</body>
+
+</html>
