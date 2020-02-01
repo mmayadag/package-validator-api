@@ -18,24 +18,11 @@ export class RepoController {
     constructor(private repoService: RepoService) { }
 
     @Get("details/:owner/:repo")
-    details(@Param("owner") owner, @Param("repo") repo): string {
+    async repoDetails(@Param("owner") owner, @Param("repo") repo, @Res() res):  Promise<any> {
         // TODO: IF this repo exists
+        const service = new AppService();
+        return await service.start({ repo, owner }, res);
         return `Details: ${owner} / ${repo}`;
-    }
-    @Get("isValid/:owner/:repo")
-    @HttpCode(HttpStatus.OK)
-    async isValide(
-        @Param("owner") owner,
-        @Param("repo") repo,
-        @Res() res
-    ): Promise<any> {
-        const service = new GithubService();
-        try {
-            let valid = await service.isValidGithubRepo(owner, repo);
-            return res.json({ valid });
-        } catch (e) {
-            return res.json({ valid: false });
-        }
     }
 
     @Post("isValid")
