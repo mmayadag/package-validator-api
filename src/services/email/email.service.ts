@@ -21,7 +21,7 @@ class EmailService {
     return msg.html || '';
   }
 
-  sendEmail(email: any, to: string, owner: string, repo: string): string {
+  sendEmail(email:any, to: string, owner: string, repo: string): string {
     const msg = {
       to,
       from,

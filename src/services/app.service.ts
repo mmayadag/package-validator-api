@@ -8,23 +8,16 @@ import {
 } from './index';
 
 class AppService {
-  logger: Logger;
+  private readonly logger: Logger = new Logger('WorkService');
 
-  gitHubService: GithubService;
+  private gitHubService: GithubService = new GithubService();
 
-  validatorService: ValidatorService;
+  private validatorService: ValidatorService = new ValidatorService();
 
-  emailService: EmailService;
-
-  constructor() {
-    this.logger = new Logger('WorkService');
-    this.gitHubService = new GithubService();
-    this.validatorService = new ValidatorService();
-    this.emailService = new EmailService();
-  }
+  private emailService: EmailService = new EmailService();
 
   async start(
-    repoDTO: { owner: string; repo: string; email: string },
+    repoDTO: { owner: string; repo: string; email?: string },
     res?: any
   ) {
     const { owner, repo, email } = repoDTO;
@@ -34,17 +27,19 @@ class AppService {
         return res.status(HttpStatus.BAD_REQUEST).json({ valid });
       }
     }
-    console.log({ valid });
-    const data = await this.gitHubService.getRepoDetails(owner, repo);
-    if (Object.keys(data).length == 0) {
-      return res.status(HttpStatus.BAD_REQUEST).json({ html: 'content not found' });
-    }
+    const data = await this.getRepoDetails(owner, repo, res);
+
     const to = email;
     const type = 'npm';
 
     const response = result => {
       const email = createMail(result, type);
-      this.emailService.sendEmail(email, to, owner, repo);
+
+      if (to != undefined) {
+        console.log({ to });
+        this.emailService.sendEmail(email, to, owner, repo);
+      }
+
       if (res) {
         console.log(typeof res);
         return res.json(email);
@@ -60,6 +55,14 @@ class AppService {
         return res.status(HttpStatus.BAD_REQUEST).json({ html: e });
       }
     }
+  }
+
+  async getRepoDetails(owner: string, repo: string, res?: any): Promise<any> {
+    const data = await this.gitHubService.getRepoDetails(owner, repo);
+    if (Object.keys(data).length == 0) {
+      return res.status(HttpStatus.BAD_REQUEST).json({ html: 'content not found' });
+    }
+    return data;
   }
 }
 export { AppService };
