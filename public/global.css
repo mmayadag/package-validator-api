@@ -78,3 +78,33 @@ button:focus {
 .red{
 	color:red;
 }
+.result-box > table{
+        box-shadow: rgba(128, 128, 128, 0.12) 1px 1px 10px;
+        width:100%;
+}
+
+table caption{
+    font-weight:bold;
+    padding:10px;
+    text-transform:capitalize;
+}
+
+table th{
+    font-weight:bold!important;
+}
+
+td, th {
+    display: table-cell;
+    padding: 16px;
+    font-size: 0.875rem;
+    text-align: left;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    line-height: 1.43;
+    border-bottom: 1px solid rgba(224, 224, 224, 1);
+    letter-spacing: 0.01071em;
+    vertical-align: inherit;
+}
+
+table td {
+	font-weight: 400;
+}
