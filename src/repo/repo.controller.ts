@@ -40,6 +40,22 @@ export class RepoController {
         }
     }
 
+    @Get("isValid/:owner/:repo")
+    @HttpCode(HttpStatus.OK)
+    async isValide(
+        @Param("owner") owner,
+        @Param("repo") repo,
+        @Res() res
+    ): Promise<any> {
+        const service = new GithubService();
+        try {
+            let valid = await service.isValidGithubRepo(owner, repo);
+            return res.json({ valid });
+        } catch (e) {
+            return res.json({ valid: false });
+        }
+    }
+
     @Post("schedule")
     @HttpCode(HttpStatus.OK)
     async create(
