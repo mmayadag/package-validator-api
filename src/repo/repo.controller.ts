@@ -18,11 +18,10 @@ export class RepoController {
     constructor(private repoService: RepoService) { }
 
     @Get("details/:owner/:repo")
-    async repoDetails(@Param("owner") owner, @Param("repo") repo, @Res() res):  Promise<any> {
+    async repoDetails(@Param("owner") owner, @Param("repo") repo, @Res() res): Promise<any> {
         // TODO: IF this repo exists
         const service = new AppService();
         return await service.start({ repo, owner }, res);
-        return `Details: ${owner} / ${repo}`;
     }
 
     @Post("isValid")
