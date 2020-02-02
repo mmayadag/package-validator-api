@@ -49,7 +49,7 @@ const createHtml = structure => structure
       .map(h => `<th>${h}</th>`)
       .join('')}</tr></thead>`;
     const tbody = `<tbody>${section.body
-      .map(tr => `<tr>${tr.map(h => `<th>${h}</th>`).join('')}</tr>`)
+      .map(tr => `<tr>${tr.map(h => `<td>${h}</td>`).join('')}</tr>`)
       .join('')}</tbody>`;
     return `<table>${caption}${thead}${tbody}</table>`;
   })
